@@ -68,3 +68,15 @@ once you've started contributing daily, you'll also need to bring in other peopl
 3. git push origin branchname
 4. if it rejects your changes, do a force push i.e "git push origin branchname --force"
 5. to make sure the correct files were added, always go see 5these commits reflected in your remote repo, under the branch you created.
+
+how to merge branches:
+1. switch from your branch to master. git checkout master
+2. git pull origin master i.e you pull in all the changes others made before you add your changes.
+3. git branch --merged ->allows you to view all the branches that have been merged with master so far.
+4. git merge branchname
+5. git push origin master
+6. rerun "git branch --merged" to check the list of branches that've been merged so far. your recently merged branch should show up here.
+
+deleting a branch:
+1. git branch -d branchname ->this only deletes the branch from the local repo.
+2. to delete the branch from the remote repo as well, run "git push origin --delete branchname"

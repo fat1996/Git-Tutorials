@@ -62,4 +62,9 @@ TODO: MIGHT NEED TO ADD SOME INSTRUCTIONS HERE(LIKE A GIT PULL TO PULL IN ANY NE
 8. open your remote repo in your browser. you should see the branch you created a light color. open a new pull request. add desc. add reviewer, if required. done!
 
 
-4. 
+once you've started contributing daily, you'll also need to bring in other people's changes before you add your own. here's what you do:
+1. do a "git pull". this will pull in other people's changes from the remote.
+2. follow the normal process to add and commit changes.
+3. git push origin branchname
+4. if it rejects your changes, do a force push i.e "git push origin branchname --force"
+5. to make sure the correct files were added, always go see 5these commits reflected in your remote repo, under the branch you created.

@@ -22,5 +22,21 @@ so there's 3 stages in git:
 2. the staging area - files that have been added using the "git add" command will show up in green.
 3. the .git dir (final stage)
 
+once files are in the staging area, they can be committed.
+to remove a file from the staging area, type "git reset filename"
+if you run git status now, this file should show up in red instead of green.
+
+to commit your changes from the staging area to the .git repo:
+type "git commit -m commitmsg"
+now, if you type git status, it'll say that the working tree is clean, which basically means that everything that was in the working dir has been committed.
+
+"git log" command: get a list of commits you've made.
+
+now, we want to create a remote repo of this folder meaning you want to see this repo is the list of repo's in your github profile.
+1. create a new repo in your github profile. it'll ask you for a repo name, description etc.
+2. type "git remote add origin URL-of-the-remote-repo"
+3. git push -u origin master
+^you don't need to memorize these instructions. these will be displayed as soon as you create the remote repo from your github profile.
+4. refresh, and you should be able to see the files you committed!
 if you want to stop tracking this with git, type "rm rf .git"
 run "git status" to see the status of your files i.e which have been committed etc.

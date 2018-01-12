@@ -1,4 +1,4 @@
-Based on the video tutorials by Corey Schafer
+Based on the video tutorials by Corey Schafer & stuff I learned at work!
 Git is a distributed vcs, unlike centralized ones like svn or perforce.
 central is located at 1 place. if this gets corrupted or damaged, you better pray there's a backup somewhere.
 distributed: everyone has a local repo. your local repo has all the info the remote repo has.
@@ -80,3 +80,39 @@ how to merge branches:
 deleting a branch:
 1. git branch -d branchname ->this only deletes the branch from the local repo.
 2. to delete the branch from the remote repo as well, run "git push origin --delete branchname"
+
+how to discard local changes you've made and revert to the original condition of the repo:
+1. run git status to make sure we've looking at the correct files
+2. git checkout filename -> here the filename is the file you made changes to, but now want reverted.
+3. run git status again, and you'll see that your working dir is clean
+4. open file too and you'll see the original, uncorrupted file.
+
+how to change the commit msg:
+1. git commit --amend -m type-new-msg ->this saves you from having to create a new commit.
+
+how to add a file to the previous commit instead of creating a new commit:
+1. git commit --amend -> this will open an interactive mode. you'll be able to see your previous commit msg. you can change it, if you want. just do a :wq and you're set!
+the new file you wanted to add is now part of your previous commit.
+
+committing to the wrong branch for eg committed to master instead of your local branch:
+how to move the commit you made on master branch to your local branch. we also want to restore the original state of our master branch.
+1. this is called cherry-pick
+2. while remaining on the branch where you accidentally committed, run a git log. this will show you the list of commits you made, including the one you want to move. copy the hash(you don't need the entire thing. a couple of chars will do)
+3. switch to the branch you want to add the commit to. git checkout -b branchname
+4. on this branch, run "git cherry-pick hash-value-you-copied"
+5. run git log to ensure the commit has been transferred.
+6. now, we want to delete this commit from where we accidentally committed it in the beginning. switch to that branch now.
+there are 3 kinds of reset: soft, mixed, hard
+say you want to get rid of the last 2 commits you made.
+run a git log.
+ignore the last 2 commits you made.
+copy the hash of the 3rd last commit you made. you want to restore the state of your files to how it was when you made the 3rd last commit i.e get rid of the last 2 commits.
+a. git reset --hard hash-you-copied ->this will discard all the changes you made in your previous 2 commits that you want discarded. you'll never be able to see those changes again.
+b. git reset --soft hash-you-copied ->this will set you back to the commit you specified, but it won't get rid of your changes. those changed files will still be in the staging area.(if you run a git status, you'll see them in green)
+c. git reset hash-you-copied ->this is the default setting(mixed). same as above, but the changes will be in the working dir, instead of the staging dir.(will show up in red if you run git status)
+
+to get rid of any untracked files(those that show up in red when you run git status):
+run "git clean -df"
+run "git status" and it should say that your working dir is clean.
+
+

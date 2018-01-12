@@ -38,5 +38,28 @@ now, we want to create a remote repo of this folder meaning you want to see this
 3. git push -u origin master
 ^you don't need to memorize these instructions. these will be displayed as soon as you create the remote repo from your github profile.
 4. refresh, and you should be able to see the files you committed!
+
+If you haven't created any branches, and you've made changes to your files, do
+1. run "git status" to check what files have been changed.
+2. git add filename
+3. git commit -m commitmsg
+4. git push origin HEAD
+5. your changes should be reflected in the remote git repo!
 if you want to stop tracking this with git, type "rm rf .git"
 run "git status" to see the status of your files i.e which have been committed etc.
+
+
+2nd scenario: cloning a remote(i.e existing) repo. most likely, this is what you'll do if you're at work.
+1. clone the repo. git clone URL-of-the-remote-repo destination (git clone url-of-remote-repo destinationURL)
+alternatively, you could simply navigate to the dir where you want to clone this repo, and then type "git clone URL-of-remoterepo"
+2. since this most likely is a scenario where you're collaborating with a bunch of people, you'll need to create a branch to work on.
+3. to see the existing list of branches, type "git branch -a". you'll see all the local and remote(that other people have created) branches.
+4. to create a branch "git checkout -b branchname"
+5. you'll switch over to this new branch.
+6. make any changes. "git add filename" followed by "git commit -m commitmsg"
+TODO: MIGHT NEED TO ADD SOME INSTRUCTIONS HERE(LIKE A GIT PULL TO PULL IN ANY NEW CHANGES. Will confirm from work).
+7. git push origin branchname
+8. open your remote repo in your browser. you should see the branch you created a light color. open a new pull request. add desc. add reviewer, if required. done!
+
+
+4. 

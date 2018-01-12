@@ -115,4 +115,15 @@ to get rid of any untracked files(those that show up in red when you run git sta
 run "git clean -df"
 run "git status" and it should say that your working dir is clean.
 
+stash command i.e you have some changes you don't wanna commit yet, or you want to revert back to where you started from , but don't wanna discard your changes cause you aern't sure if you'll need them in the future
+1. you make some changes. but now you wanna check how the file looked before you made any changes to it.
+2. run "git stash save msg-to-remind-you-what-you-did(in inverted commas)"
+3. run git status and those changed files won't show up. if you check those files, you won't be able to see the changes you made.
+4. to restore these changes, run "git stash list" -> this will show you the msgs you saved your stashes with.
+there are 2 ways to doing this i.e restoring the changes:
+a. git stash apply stash-name -> you get the stashname from running "git stash list". this will bring back your changes, but you'll still see the stash if you run "git stash list"
+b. git stash pop -> changes brough back, and you won't see the stash now if you run "git stash list"
+
+how to discard a stash from your stash list:
+git stash drop stash-name
 

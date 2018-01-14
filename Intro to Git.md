@@ -1,15 +1,47 @@
 Based on the video tutorials by Corey Schafer & stuff I learned at work!
-Git is a distributed vcs, unlike centralized ones like svn or perforce.
-central is located at 1 place. if this gets corrupted or damaged, you better pray there's a backup somewhere.
-distributed: everyone has a local repo. your local repo has all the info the remote repo has.
-its like every developer has a copy of the same repo.
-2 scenarios we can start out with:
-1. there's a local project you have on your computer that you want to start tracking
-2. there's a remote repo you want to start tracking(eg if you're collabing with friends or work)
 
-scenario 1:
+Some useful terms
+1.	Checksum:
+A checksum is basically the result of an algorithm called the cryptographic hash function that is used to determine if your file is genuine or not. 
+Say you’re downloading a file. Once its downloaded, you want to make sure if you downloaded it successfully or whether some parts of it were left behind or whether it has been maliciously tampered with. If the source that you downloaded your file from provides you with a checksum of the data on the website, you can use a checksum calculator (available online) to determine the checksum for the data you downloaded and compare the 2 values. If they’re the same, your download was successful in the sense that nothing was tampered with or modified. If not, something went wrong (these reasons don’t necessarily have to be malicious. It could be something as trivial as losing your internet connection while you were downloading).
+
+2.	Version Control:
+The major difference between git and other version control systems is how they keep track of any changes made in a certain directory/project. Other systems such as subversion (SVN) or perforce think of the changes made per file. They basically track the changes made to files over a certain period. On the contrary, git thinks of its files as ‘screenshots’. Every time you commit some changes, it takes a ‘screenshot’ of all the files in your directory. 
+Git has ‘integrity’ in the sense that it stores everything using its checksum and then that piece of data is referred to using that checksum. This ensures that git is aware of every minuscule change you make. Git stores everything using its hash value, so if you happen to see a long sequence of seemingly random strings and numbers, don’t be surprised. 
+Git is a distributed VCS, unlike centralized ones like SVN or perforce.
+Centralized means data is located at one place. If this gets corrupted or damaged, you better pray there's a backup somewhere.
+Distributed: everyone has a local repository. Your local repo has all the data the remote repo has. It's like every developer has a copy of the same repo.
+
+3 main sections of a git project:
+1. Git directory 
+2. Working tree
+3. Staging area
+
+Basic git workflow:
+You make a change in your working directory. The files are then staged, so snapshots of them are created and stored in the staging area. Once you do a commit, these snapshots are taken and stored in your git directory. 
+
+Using git:
+While there are GUI’s that you could use to avoid using the terminal, I would strongly advise against them. Not that there’s anything wrong with them, just that using the terminal is an incredibly powerful tool to have, and it’ll help you gain a better and deeper understanding of how things work in git. 
+
+Squashing Commits:
+Multiple commits, do you want to either squash them together or delete some of them. Type ‘git rebase -i HEAD~x’ where x is the number of commits you wish to view. This will open a file where you’ll be presented with multiple options (where you can pick which commits to squash together, which to delete, if you want to change the commit message etc). Once this is successfully done, type ‘git push –force origin HEAD’.
+
+Removing Files:
+Simply removing the file from your working directory: ‘git rm filename’
+ 
+Moving Files:
+If you want to rename a file, simply type ‘git mv older-version newer-version’
+
+Viewing the commit history:
+Type ‘git log’. You’ll see a list of commits in reverse chronological order(recent most commit first). Each commit is accompanied by its checksum, author name, email, date and the commit message.
+
+2 scenarios we can start out with:
+1. There's a local project you have on your computer that you want to start tracking.
+2. There's a remote repo you want to start tracking (e.g. if you're collaborating with friends or for work)
+
+Scenario 1:
 1. navigate into the folder you want to start tracking.
-2. so for eg, create a folder on your desktop. open git bash. navigate into it.
+2. so for e.g., create a folder on your desktop. open git bash. navigate into it.
 3. type "git init". this will initialize a git repo within this folder.
 4. if you want to create some personal files with sensitive data that you don't want shared with other people, create a .gitignore file.
 5. simply type "touch .gitignore". this is a simple textfile.
@@ -17,20 +49,17 @@ scenario 1:
 7. add .ignorethisfile to the .gitignore file.
 8. once you add files to the .gitignore file, you will no longer see them once you run "git status"
 
-so there's 3 stages in git:
-1. the working dir - this is where you start working. so any files you create, make changes to start off in this area. if you run git status, you'll see files in the working dir in red.
-2. the staging area - files that have been added using the "git add" command will show up in green.
-3. the .git dir (final stage)
-
+So there's 3 stages in git:
+1. The working dir - this is where you start working. so any files you create, make changes to start off in this area. if you run git status, you'll see files in the working dir in red.
+2. The staging area - files that have been added using the "git add" command will show up in green.
 once files are in the staging area, they can be committed.
 to remove a file from the staging area, type "git reset filename"
 if you run git status now, this file should show up in red instead of green.
+3. The .git dir (final stage)
 
-to commit your changes from the staging area to the .git repo:
+To commit your changes from the staging area to the .git repo:
 type "git commit -m commitmsg"
 now, if you type git status, it'll say that the working tree is clean, which basically means that everything that was in the working dir has been committed.
-
-"git log" command: get a list of commits you've made.
 
 now, we want to create a remote repo of this folder meaning you want to see this repo is the list of repo's in your github profile.
 1. create a new repo in your github profile. it'll ask you for a repo name, description etc.
@@ -46,10 +75,8 @@ If you haven't created any branches, and you've made changes to your files, do
 4. git push origin HEAD
 5. your changes should be reflected in the remote git repo!
 if you want to stop tracking this with git, type "rm rf .git"
-run "git status" to see the status of your files i.e which have been committed etc.
 
-
-2nd scenario: cloning a remote(i.e existing) repo. most likely, this is what you'll do if you're at work.
+2nd scenario: cloning a remote (i.e existing) repo. most likely, this is what you'll do if you're at work.
 1. clone the repo. git clone URL-of-the-remote-repo destination (git clone url-of-remote-repo destinationURL)
 alternatively, you could simply navigate to the dir where you want to clone this repo, and then type "git clone URL-of-remoterepo"
 2. since this most likely is a scenario where you're collaborating with a bunch of people, you'll need to create a branch to work on.
@@ -57,17 +84,15 @@ alternatively, you could simply navigate to the dir where you want to clone this
 4. to create a branch "git checkout -b branchname"
 5. you'll switch over to this new branch.
 6. make any changes. "git add filename" followed by "git commit -m commitmsg"
-TODO: MIGHT NEED TO ADD SOME INSTRUCTIONS HERE(LIKE A GIT PULL TO PULL IN ANY NEW CHANGES. Will confirm from work).
 7. git push origin branchname
 8. open your remote repo in your browser. you should see the branch you created a light color. open a new pull request. add desc. add reviewer, if required. done!
-
 
 once you've started contributing daily, you'll also need to bring in other people's changes before you add your own. here's what you do:
 1. do a "git pull". this will pull in other people's changes from the remote.
 2. follow the normal process to add and commit changes.
 3. git push origin branchname
 4. if it rejects your changes, do a force push i.e "git push origin branchname --force"
-5. to make sure the correct files were added, always go see 5these commits reflected in your remote repo, under the branch you created.
+5. to make sure the correct files were added, always go see these commits reflected in your remote repo, under the branch you created.
 
 how to merge branches:
 1. switch from your branch to master. git checkout master
@@ -126,4 +151,14 @@ b. git stash pop -> changes brough back, and you won't see the stash now if you 
 
 how to discard a stash from your stash list:
 git stash drop stash-name
+
+SVN:
+For working on every new jira issue, create a new branch.
+But 1st, always update your local repo.
+If you see red ! marks, delet those files, and then do an svn update.
+Proceed when everything has green ticks.
+To create a new branch, right click and click on branch/tag.
+Done!
+But now we need to get that branch in our local repo. Do this with a git checkout. Your branch will be created (the entire folder). Make any changes you need in that folder and nowhere else.
+Once you make changes in your branch, you want to be able to view them everywhere. Commit everytime you’re done making changes through ‘svn commit’. This will update your branch on the local server and you’ll be able to view any changes you made everywhere.
 

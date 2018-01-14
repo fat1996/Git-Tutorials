@@ -94,7 +94,7 @@ once you've started contributing daily, you'll also need to bring in other peopl
 4. if it rejects your changes, do a force push i.e "git push origin branchname --force"
 5. to make sure the correct files were added, always go see these commits reflected in your remote repo, under the branch you created.
 
-how to merge branches:
+<b>how to merge branches:</b>
 1. switch from your branch to master. git checkout master
 2. git pull origin master i.e you pull in all the changes others made before you add your changes.
 3. git branch --merged ->allows you to view all the branches that have been merged with master so far.
@@ -102,24 +102,24 @@ how to merge branches:
 5. git push origin master
 6. rerun "git branch --merged" to check the list of branches that've been merged so far. your recently merged branch should show up here.
 
-deleting a branch:
+<b>deleting a branch:</b>
 1. git branch -d branchname ->this only deletes the branch from the local repo.
 2. to delete the branch from the remote repo as well, run "git push origin --delete branchname"
 
-how to discard local changes you've made and revert to the original condition of the repo:
+<b>how to discard local changes you've made and revert to the original condition of the repo:</b>
 1. run git status to make sure we've looking at the correct files
 2. git checkout filename -> here the filename is the file you made changes to, but now want reverted.
 3. run git status again, and you'll see that your working dir is clean
 4. open file too and you'll see the original, uncorrupted file.
 
-how to change the commit msg:
+<b>how to change the commit msg:</b>
 1. git commit --amend -m type-new-msg ->this saves you from having to create a new commit.
 
-how to add a file to the previous commit instead of creating a new commit:
+<b>how to add a file to the previous commit instead of creating a new commit:</b>
 1. git commit --amend -> this will open an interactive mode. you'll be able to see your previous commit msg. you can change it, if you want. just do a :wq and you're set!
 the new file you wanted to add is now part of your previous commit.
 
-committing to the wrong branch for eg committed to master instead of your local branch:
+<b>committing to the wrong branch for eg committed to master instead of your local branch:</b>
 how to move the commit you made on master branch to your local branch. we also want to restore the original state of our master branch.
 1. this is called cherry-pick
 2. while remaining on the branch where you accidentally committed, run a git log. this will show you the list of commits you made, including the one you want to move. copy the hash(you don't need the entire thing. a couple of chars will do)
@@ -136,11 +136,11 @@ a. git reset --hard hash-you-copied ->this will discard all the changes you made
 b. git reset --soft hash-you-copied ->this will set you back to the commit you specified, but it won't get rid of your changes. those changed files will still be in the staging area.(if you run a git status, you'll see them in green)
 c. git reset hash-you-copied ->this is the default setting(mixed). same as above, but the changes will be in the working dir, instead of the staging dir.(will show up in red if you run git status)
 
-to get rid of any untracked files(those that show up in red when you run git status):
+<b>to get rid of any untracked files(those that show up in red when you run git status):</b>
 run "git clean -df"
 run "git status" and it should say that your working dir is clean.
 
-stash command i.e you have some changes you don't wanna commit yet, or you want to revert back to where you started from , but don't wanna discard your changes cause you aern't sure if you'll need them in the future
+<b>stash command</b> i.e you have some changes you don't wanna commit yet, or you want to revert back to where you started from , but don't wanna discard your changes cause you aern't sure if you'll need them in the future
 1. you make some changes. but now you wanna check how the file looked before you made any changes to it.
 2. run "git stash save msg-to-remind-you-what-you-did(in inverted commas)"
 3. run git status and those changed files won't show up. if you check those files, you won't be able to see the changes you made.
@@ -149,10 +149,10 @@ there are 2 ways to doing this i.e restoring the changes:
 a. git stash apply stash-name -> you get the stashname from running "git stash list". this will bring back your changes, but you'll still see the stash if you run "git stash list"
 b. git stash pop -> changes brough back, and you won't see the stash now if you run "git stash list"
 
-how to discard a stash from your stash list:
+<b>how to discard a stash from your stash list:</b>
 git stash drop stash-name
 
-SVN:
+<b>SVN:</b>
 For working on every new jira issue, create a new branch.
 But 1st, always update your local repo.
 If you see red ! marks, delet those files, and then do an svn update.

@@ -184,6 +184,18 @@ Not recommended:
 <b>how to discard a stash from your stash list:</b>
 
 	git stash drop stash-name
+	
+<b>Deleting a specific commit</b>
+2 possible scenarios:
+1. you've made the commit but you haven't pushed it yet.
+git rebase -p --onto SHA^ SHA
+where SHA is substituted with the hash ID from the git log. 
+2. you've pushed the commit to remote.
+git rebase -p --onto SHA^ SHA
+same as above, only this time you need to push this deletion of commit to your remote. Type
+git push origin +master
+The + is necessary.
+
 
 <b>SVN:</b>
 For working on every new jira issue, create a new branch.

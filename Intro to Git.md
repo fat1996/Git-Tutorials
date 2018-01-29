@@ -186,15 +186,22 @@ Not recommended:
 	git stash drop stash-name
 	
 <b>Deleting a specific commit</b>
+
 2 possible scenarios:
-1. you've made the commit but you haven't pushed it yet.
-git rebase -p --onto SHA^ SHA
-where SHA is substituted with the hash ID from the git log. 
-2. you've pushed the commit to remote.
-git rebase -p --onto SHA^ SHA
-same as above, only this time you need to push this deletion of commit to your remote. Type
-git push origin +master
-The + is necessary.
+
+	1. you've made the commit but you haven't pushed it yet.
+	git rebase -p --onto SHA^ SHA
+	where SHA is substituted with the hash ID from the git log. 
+	2. you've pushed the commit to remote.
+	git rebase -p --onto SHA^ SHA
+	same as above, only this time you need to push this deletion of commit to your remote. Type
+	git push origin +master
+	The + is necessary.
+
+<b>Setting up your email address(useful if you have multiple github profiles e.g work vs personal and you want to contribute to both simultaneously)</b>
+
+open git bash in the dir you're making your changes in. Type
+git config user.email "email-address"
 
 
 <b>SVN:</b>

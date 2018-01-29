@@ -150,7 +150,7 @@ Not recommended:
 <b>committing to the wrong branch for eg committed to master instead of your local branch:</b>
 
 	how to move the commit you made on master branch to your local branch. we also want to restore the original state of our master branch.
-	1. this is called cherry-pick
+	1. this is called cherry-pick (to abort a cherrypick, type "git cherry-pick --abort")
 	2. while remaining on the branch where you accidentally committed, run a git log. this will show you the list of commits you made, including the one you want to move. copy the hash(you don't need the entire thing. a couple of chars will do)
 	3. switch to the branch you want to add the commit to. git checkout -b branchname
 	4. on this branch, run "git cherry-pick hash-value-you-copied"
@@ -164,6 +164,7 @@ Not recommended:
 	a. git reset --hard hash-you-copied ->this will discard all the changes you made in your previous 2 commits that you want discarded. you'll never be able to see those changes again.
 	b. git reset --soft hash-you-copied ->this will set you back to the commit you specified, but it won't get rid of your changes. those changed files will still be in the staging area.(if you run a git status, you'll see them in green)
 	c. git reset hash-you-copied ->this is the default setting(mixed). same as above, but the changes will be in the working dir, instead of the staging dir.(will show up in red if you run git status)
+	
 
 <b>to get rid of any untracked files(those that show up in red when you run git status):</b>
 

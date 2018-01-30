@@ -204,6 +204,11 @@ Not recommended:
 open git bash in the dir you're making your changes in. Type
 git config user.email "email-address"
 
+reverting a single file that hasn't been committed yet:
+https://www.norbauer.com/rails-consulting/notes/git-revert-reset-a-single-file
+git checkout filename
+if you made changes to a file that you <b>haven't committed</b> yet, type the above mentioned command and it will revert back to its original state.
+
 
 <b>SVN:</b>
 For working on every new jira issue, create a new branch.

@@ -209,6 +209,7 @@ https://www.norbauer.com/rails-consulting/notes/git-revert-reset-a-single-file
 git checkout filename
 if you made changes to a file that you <b>haven't committed</b> yet, type the above mentioned command and it will revert back to its original state.
 
+get a specific file from a specific branch: git checkout branchname -- filename
 
 <b>SVN:</b>
 For working on every new jira issue, create a new branch.

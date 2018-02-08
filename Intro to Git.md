@@ -211,6 +211,17 @@ if you made changes to a file that you <b>haven't committed</b> yet, type the ab
 
 get a specific file from a specific branch: git checkout branchname -- filename
 
+git reset --hard :to restore your working to the state of the last commit. This will lose your changes from the working tree so if you had local modifications before the merge they will be gone after this
+
+git clean  -d  -f ""
+where -d can be replace with following:
+
+-x means ignored files are also removed as well as files unknown to git.
+
+-d means remove untracked directories in addition to untracked files.
+
+-f is required to force it to run.
+
 <b>SVN:</b>
 For working on every new jira issue, create a new branch.
 But 1st, always update your local repo.

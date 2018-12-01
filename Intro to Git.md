@@ -18,89 +18,112 @@ Distributed: everyone has a local repository. Your local repo has all the data t
 	2. Working tree
 	3. Staging area
 
-<b>Basic git workflow:</b>
+<u><b>Basic git workflow:</b></u>
 
-	You make a change in your working directory. The files are then staged, so snapshots of them are created and stored in the staging area. Once you do a commit, these snapshots are taken and stored in your git directory. 
+You make a change in your working directory. The files are then staged, so snapshots of them are created and stored in the staging area. Once you do a commit, these snapshots are taken and stored in your git directory. 
 
-<b>Using git:</b>
+<u><b>Using git:</b></u>
 
-	While there are GUI’s that you could use to avoid using the terminal, I would strongly advise against them. Not that there’s anything wrong with them, just that using the terminal is an incredibly powerful tool to have, and it’ll help you gain a better and deeper understanding of how things work in git. 
+While there are GUI’s that you could use to avoid using the terminal, I would strongly advise against them. Not that there’s anything wrong with them, just that using the terminal is an incredibly powerful tool to have, and it’ll help you gain a better and deeper understanding of how things work in git. 
 
-<b>Squashing Commits:</b>
+<u><b>Squashing Commits:</b></u>
 
-	Multiple commits, do you want to either squash them together or delete some of them. Type ‘git rebase -i HEAD~x’ where x is the number of commits you wish to view. This will open a file where you’ll be presented with multiple options (where you can pick which commits to squash together, which to delete, if you want to change the commit message etc). Once this is successfully done, type ‘git push –force origin HEAD’.
+Multiple commits, do you want to either squash them together or delete some of them. Type ‘git rebase -i HEAD~x’ where x is the number of commits you wish to view. This will open a file where you’ll be presented with multiple options (where you can pick which commits to squash together, which to delete, if you want to change the commit message etc). Once this is successfully done, type ‘git push –force origin HEAD’.
 
-<b>Removing Files:</b>
+<u><b>Removing Files:</b></u>
 
-	Simply removing the file from your working directory: ‘git rm filename’
+Simply removing the file from your working directory: ‘git rm filename’
  
-<b>Moving Files:</b>
+<u><b>Moving Files:</b></u>
 
-	If you want to rename a file, simply type ‘git mv older-version newer-version’
+If you want to rename a file, simply type ‘git mv older-version newer-version’
 
-<b>Viewing the commit history:</b>
+<u><b>Viewing the commit history:</b></u>
 
-	Type ‘git log’. You’ll see a list of commits in reverse chronological order(recent most commit first). Each commit is accompanied by its checksum, author name, email, date and the commit message.
+Type ‘git log’. You’ll see a list of commits in reverse chronological order(recent most commit first). Each commit is accompanied by its checksum, author name, email, date and the commit message.
 
-2 scenarios we can start out with:
+<u><b>2 scenarios we can start out with:</b></u>
+1. There's a local project you have on your computer that you want to start tracking.
+2. There's a remote repo you want to start tracking (e.g. if you're collaborating with friends or for work)
 
-	1. There's a local project you have on your computer that you want to start tracking.
-	2. There's a remote repo you want to start tracking (e.g. if you're collaborating with friends or for work)
+<u><b>Scenario 1:</b></u>
+1. navigate into the folder you want to start tracking.
+2. so for e.g., create a folder on your desktop. open git bash. navigate into it.
+3. type "git init". this will initialize a git repo within this folder.
+4. if you want to create some personal files with sensitive data that you don't want shared with other people, create a .gitignore file.
+5. simply type "touch .gitignore". this is a simple textfile.
+6. open this file now, and add the file names you want ignored. these files should start with "." for eg .ignorethisfile
+7. add .ignorethisfile to the .gitignore file.
+8. once you add files to the .gitignore file, you will no longer see them once you run "git status"
 
-<b>Scenario 1:</b>
-
-	1. navigate into the folder you want to start tracking.
-	2. so for e.g., create a folder on your desktop. open git bash. navigate into it.
-	3. type "git init". this will initialize a git repo within this folder.
-	4. if you want to create some personal files with sensitive data that you don't want shared with other people, create a .gitignore file.
-	5. simply type "touch .gitignore". this is a simple textfile.
-	6. open this file now, and add the file names you want ignored. these files should start with "." for eg .ignorethisfile
-	7. add .ignorethisfile to the .gitignore file.
-	8. once you add files to the .gitignore file, you will no longer see them once you run "git status"
-
-<b>So there's 3 stages in git:</b>
-
-	1. The working dir - this is where you start working. so any files you create, make changes to start off in this area. if you run git status, you'll see files in the working dir in red.
-	2. The staging area - files that have been added using the "git add" command will show up in green.
+<u><b>So there's 3 stages in git:</b></u>
+1. The working dir - this is where you start working. so any files you create, make changes to start off in this area. if you run git status, you'll see files in the working dir in red.
+2. The staging area - files that have been added using the "git add" command will show up in green.
+	
 	once files are in the staging area, they can be committed.
+	
 	to remove a file from the staging area, type "git reset filename"
+	
 	if you run git status now, this file should show up in red instead of green.
-	3. The .git dir (final stage)
+3. The .git dir (final stage)
 
-<b>To commit your changes from the staging area to the .git repo:</b>
+<u><b>To commit your changes from the staging area to the .git repo:</b></u>
+
 type "git commit -m commitmsg"
+
 now, if you type git status, it'll say that the working tree is clean, which basically means that everything that was in the working dir has been committed.
 
-<b>Now, we want to create a remote repo of this folder meaning you want to see this repo is the list of repo's in your github profile.</b>
+<u><b>Now, we want to create a remote repo of this folder meaning you want to see this repo is the list of repo's in your github profile.</b></u>
+1. create a new repo in your github profile. it'll ask you for a repo name, description etc.
+2. type "git remote add origin URL-of-the-remote-repo"
+3. git push -u origin master	
 
-	1. create a new repo in your github profile. it'll ask you for a repo name, description etc.
-	2. type "git remote add origin URL-of-the-remote-repo"
-	3. git push -u origin master
-	^you don't need to memorize these instructions. these will be displayed as soon as you create the remote repo from your github profile.
-	4. refresh, and you should be able to see the files you committed!
+^you don't need to memorize these instructions. these will be displayed as soon as you create the remote repo from your github profile.
+4. refresh, and you should be able to see the files you committed!
 
-<b>If you haven't created any branches, and you've made changes to your files, do</b>
-
-	1. run "git status" to check what files have been changed.
-	2. git add filename
-	3. git commit -m commitmsg
-	4. git push origin HEAD
-	5. your changes should be reflected in the remote git repo!
+<u><b>If you haven't created any branches, and you've made changes to your files, do</b></u>
+1. run "git status" to check what files have been changed.
+2. git add filename
+3. git commit -m commitmsg
+4. git push origin HEAD
+5. your changes should be reflected in the remote git repo!
+	
 	if you want to stop tracking this with git, type "rm rf .git"
 
-<b>2nd scenario: cloning a remote (i.e existing) repo. most likely, this is what you'll do if you're at work.</b>
+<u><b>2nd scenario: cloning a remote (i.e existing) repo. most likely, this is what you'll do if you're at work.</b></u>
 
-	1. clone the repo. git clone URL-of-the-remote-repo destination (git clone url-of-remote-repo destinationURL)
-	alternatively, you could simply navigate to the dir where you want to clone this repo, and then type "git clone URL-of-remoterepo"
-	2. since this most likely is a scenario where you're collaborating with a bunch of people, you'll need to create a branch to work on.
-	3. to see the existing list of branches, type "git branch -a". you'll see all the local and remote(that other people have created) branches.
-	4. to create a branch "git checkout -b branchname"
-	5. you'll switch over to this new branch.
-	6. make any changes. "git add filename" followed by "git commit -m commitmsg"
-	7. git push origin branchname
-	8. open your remote repo in your browser. you should see the branch you created a light color. open a new pull request. add desc. add reviewer, if required. done!
+1. clone the repo. git clone URL-of-the-remote-repo destination (git clone url-of-remote-repo destinationURL)
+alternatively, you could simply navigate to the dir where you want to clone this repo, and then type "git clone URL-of-remoterepo"
+2. since this most likely is a scenario where you're collaborating with a bunch of people, you'll need to create a branch to work on.
+3. to see the existing list of branches, type "git branch -a". you'll see all the local and remote(that other people have created) branches.
+4. to create a branch "git checkout -b branchname"
+5. you'll switch over to this new branch.
+6. make any changes. "git add filename" followed by "git commit -m commitmsg"
+7. git push origin branchname
+8. open your remote repo in your browser. you should see the branch you created a light color. open a new pull request. add desc. add reviewer, if required. done!
 
 <b>once you've started contributing daily, you'll also need to bring in other people's changes before you add your own. here's what you do(one's recommended, the other isn't):</b>
+Easiest way to pull in latest changes from a specific branch:
+
+git branch --set-upstream-to=origin/develop or
+
+git branch --set-upstream-to=origin/feature/branch-name
+
+Once this is done, you'll see a msg saying that your upstream has been set to track changes from origin/develop or origin/feature/branch-name.
+Now type
+
+git pull
+
+This'll pull in all the changes from the specific branch you just set your branch to.
+
+In case of merge conflicts:
+If there's merge conflicts, git will tell you what files have merge conflicts. Also, in your branchname, you'll see '|MERGING', which means your merge isn't complete yet.
+To resolve your merge conflicts, open the files that git was complaining about, and start resolving the conflicts. This either means you accept your local changes or the ones that just got fetched. After you've fixed each file, do a 
+
+git add file-name
+
+Once you've fixed all the merge conflicts, the '|MERGING' should go away, showing that all your merge conflicts have been resolved. Duh.
+
 
 Recommended:
 

@@ -167,8 +167,8 @@ Not recommended:
 
 <b>how to add a file to the previous commit instead of creating a new commit:</b>
 
-	1. git commit --amend -> this will open an interactive mode. you'll be able to see your previous commit msg. you can change it, if you want. just do a :wq and you're set!
-	the new file you wanted to add is now part of your previous commit.
+	1. git add the_left_out_file
+	2. git commit --amend --no-edit
 
 <b>committing to the wrong branch for eg committed to master instead of your local branch:</b>
 
